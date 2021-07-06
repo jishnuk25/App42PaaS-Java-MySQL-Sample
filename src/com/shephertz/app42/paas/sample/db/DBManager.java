@@ -1,5 +1,9 @@
 package com.shephertz.app42.paas.sample.db;
 
+import org.apache.log4j.BasicConfigurator;  
+import org.apache.log4j.LogManager;  
+import org.apache.log4j.Logger;  
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,7 +19,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import com.shephertz.app42.paas.sample.util.Util;
 
 public class DBManager {
-
+	private static final Logger logger = LogManager.getLogger(DBManager.class);
 	private DriverManagerDataSource dataSource = null;
 	private static final DBManager dsManager = new DBManager();
 	static {
@@ -49,6 +53,8 @@ public class DBManager {
 			dataSource.setPassword(password);
 		} catch (Exception e) {
 			e.printStackTrace();
+			logger.info("Hello world");  
+  			logger.info("we are in logger info mode");  
 		}
 	}
 
